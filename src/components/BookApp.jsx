@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getBooks } from "../services/getBooks";
 import BookList from "./BookList";
+import BookDetails from "./BookDetails";
 
 function BookApp() {
   const [booksData, setBooksData] = useState(null);
@@ -22,6 +23,7 @@ function BookApp() {
   function onSelectBook(bookId) {
     const book = booksData.find((currBook) => bookId === currBook.id);
     setSelectBook(book);
+    console.log(bookId);
   }
   return (
     <>
@@ -30,12 +32,7 @@ function BookApp() {
       ) : (
         <p>Loding...</p>
       )}
-      {/* <BookFilter
-        filterBy={this.state.filterBy}
-        onSetFilter={this.onSetFilter}
-      />
-      <BookList onSelectBook={this.onSelectBook} books={booksToShow} />
-      <BookDetails book={selectedBook} onUnSelectBook={this.onUnSelectBook} /> */}
+      <BookDetails />
     </>
   );
 }
