@@ -32,7 +32,7 @@ function BookApp() {
       ) : (
         <p>Loding...</p>
       )}
-      <BookDetails />
+      {selectBook && <BookDetails book={selectBook} />}
     </>
   );
 }
