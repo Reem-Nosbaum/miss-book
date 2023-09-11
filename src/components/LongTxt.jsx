@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function LongTxt({ book }) {
-  //   function isLongTxtShown() {}
+  const [isLongTxtShown, setIsLongTxtShown] = useState(false);
+
+  const toggleText = () => {
+    setIsLongTxtShown(!isLongTxtShown);
+  };
+
+  const displayedText = isLongTxtShown
+    ? book.description
+    : book.description.slice(0, 100);
 
   return (
-    <>
-      <h3>{book.description}</h3>
-    </>
+    <div>
+      <p>{displayedText}</p>
+      {book.description.length > 100 && (
+        <button onClick={toggleText}>
+          {isLongTxtShown ? "Read Less" : "Read More"}
+        </button>
+      )}
+    </div>
   );
 }
